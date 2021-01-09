@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "Page Analyse Extention",
+    "version": "1.0",
+    "description": "Analyse a specific page.",
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "browser_action": {
+        "default_icon": "icon16.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [
+            "eventPage.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js",
+                "jquery-3.5.1.min.js"
+            ]
+        }
+    ],
+    "options_page":"options.html",
+    "permissions": [
+        "tabs",
+        "<all_urls>",
+        "storage",
+        "contextMenus"
+    ],
+    "content_security_policy": "script-src 'self' https://code.jquery.com/jquery-3.3.1.slim.min.js https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js; object-src 'self' "
+}
